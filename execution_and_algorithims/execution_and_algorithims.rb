@@ -24,7 +24,7 @@ end
 #BigO(n^k)
 #refer to as a placeholder(ex. n^k == n^2)
 list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
-p my_min_bad(list)  # =>  -5
+#p my_min_bad(list)  # =>  -5
 
 def largest_contigous_subsum(list2)
   sub_arrays = []
@@ -42,13 +42,15 @@ end
 #n^k
 
 list2 = [2, 3, -6, 7, -6, 7] # => 8
-p largest_contigous_subsum(list2)
+#p largest_contigous_subsum(list2)
 
 def better_contigous_subsum(list3)
   largest_sum = 0 
-  current_sum = 0
+  current_sum = list3.first
 
-  list3.each do |el|
+  return list3.max if list3.all? {|el| el < 0}
+
+  list3[1..-1].each do |el|
     current_sum += el
     if current_sum > largest_sum
       largest_sum = current_sum
@@ -58,8 +60,9 @@ def better_contigous_subsum(list3)
     end
   end
   largest_sum
+
 end
 
-list3 = [1,2,-4,3,1]
-p better_contigous_subsum(list2)
+list3 = [-5, -1, -3]
+p better_contigous_subsum(list3)
  
